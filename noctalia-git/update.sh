@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 set -euxo pipefail
 
-SPEC_FILE="noctalia-shell.spec"
+SPEC_FILE="noctalia-git.spec"
 REPO="noctalia-dev/noctalia-shell"
 BRANCH="v5"
 ec=0
@@ -32,6 +32,6 @@ sed -i "s/^%global commit.*/%global commit          $newCommit/" "$SPEC_FILE"
 
 git diff --quiet "$SPEC_FILE" || \
 {
-    git commit -am "up rev noctalia-shell-${newTag:-$oldVersion}+${newCommit:0:7}"
+    git commit -am "up rev noctalia-git-${newTag:-$oldVersion}+${newCommit:0:7}"
     git push
 }
