@@ -1,10 +1,10 @@
-%global commit          7d05eb2e1656e059523c82353251d53289a34d6e
+%global commit          22fb36c7280c6e51d03fb21aa2e6ce3cf345038c
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global upstreamname    noctalia-shell
 
 Name:   	noctalia-git
 Version:	5.0.0
-Release:	0.105.git%{shortcommit}%{?dist}
+Release:	0.106.git%{shortcommit}%{?dist}
 Summary:	A lightweight Wayland shell and bar built directly on Wayland + OpenGL ES, with no Qt or GTK dependency.
 
 License:	MIT
