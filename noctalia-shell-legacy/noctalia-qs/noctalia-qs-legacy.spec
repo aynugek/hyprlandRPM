@@ -1,3 +1,4 @@
+%global upstreamname    noctalia
 %bcond_with         asan
 
 Name:               noctalia-qs-legacy
@@ -7,7 +8,7 @@ Summary:            Fork of Quickshell - a flexible QtQuick based desktop shell 
 
 License:            LGPL-3.0-only AND GPL-3.0-only
 URL:                https://github.com/noctalia-dev/noctalia-qs
-Source:             %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source:             %{url}/archive/v%{version}/%{upstreamname}-%{version}.tar.gz
 
 BuildRequires:      breakpad-static
 BuildRequires:      cmake
@@ -73,8 +74,8 @@ noctalia-qs is a custom fork of Quickshell — a flexible QtQuick-based desktop 
 #%%doc changelog/v%%{version}.md
 %{_bindir}/quickshell
 %{_bindir}/qs
-%{_datadir}/applications/dev.noctalia.%{name}.desktop
-%{_datadir}/icons/hicolor/scalable/apps/dev.noctalia.%{name}.svg
+%{_datadir}/applications/dev.noctalia.%{upstreamname}.desktop
+%{_datadir}/icons/hicolor/scalable/apps/dev.noctalia.%{upstreamname}.svg
 %{_libdir}/qt6/qml/Quickshell
 
 %changelog
