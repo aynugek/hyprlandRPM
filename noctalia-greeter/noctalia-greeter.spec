@@ -1,16 +1,15 @@
-%global commit          db60c06b5f6ff5da4d5f1126eff312b2a41ef614
+%global commit          11f8092eda1f2a674a2e7ee25a8325b41f894e39
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 Name:   	noctalia-greeter
 Version:	1.0.0
-Release:	0.1.git%{shortcommit}%{?dist}
+Release:	0.2.git%{shortcommit}%{?dist}
 Summary:	A minimal login greeter for greetd that matches the look and feel of Noctalia Shell.
 
 License:	MIT
 URL:		https://github.com/noctalia-dev/%{name}
 Source0:	%{url}/archive/%{commit}/%{name}-%{commit}.tar.gz
 
-BuildRequires:  cage
 BuildRequires:  dbus
 BuildRequires:  gcc-c++
 BuildRequires:  greetd
@@ -29,11 +28,10 @@ BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  polkit
-BuildRequires:  wlr-randr
+BuildRequires:  wlroots-devel >= 0.20
 
-Requires:       cage
 Requires:       dbus
-Requires:       greetd
+Requires:       wlroots >= 0.20
 
 %description
 %{summary}
@@ -42,8 +40,7 @@ Requires:       greetd
 %autosetup -n %{name}-%{commit}
 
 %build
-export LDFLAGS="%{__global_ldflags} -Wl,-z,notext"
-%meson
+%meson -Db_pie=true
 %meson_build
 
 %install
@@ -64,6 +61,7 @@ export LDFLAGS="%{__global_ldflags} -Wl,-z,notext"
 #%%{_licensedir}/%%{name}/third_party/
 %{_bindir}/%{name}
 %{_bindir}/%{name}-apply-appearance
+%{_bindir}/%{name}-compositor
 %{_bindir}/%{name}-print-greetd-config
 %{_bindir}/%{name}-session
 %{_datadir}/%{name}/*
