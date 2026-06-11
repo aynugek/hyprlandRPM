@@ -31,6 +31,7 @@ BuildRequires:  polkit
 BuildRequires:  wlroots-devel >= 0.20
 
 Requires:       dbus
+Requires:       greetd
 Requires:       wlroots >= 0.20
 
 %description
