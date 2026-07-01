@@ -4,7 +4,7 @@
 
 Name:   	noctalia-git
 Version:	5.0.0
-Release:	0.237.git%{shortcommit}%{?dist}
+Release:	0.238.git%{shortcommit}%{?dist}
 Summary:	A lightweight Wayland shell and bar built directly on Wayland + OpenGL ES, with no Qt or GTK dependency.
 
 License:	MIT
@@ -15,6 +15,7 @@ BuildRequires:  meson
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  desktop-file-utils
+BuildRequires:  md4c-devel
 BuildRequires:  tomlplusplus-devel
 BuildRequires:  pipewire-devel
 BuildRequires:  wireplumber-devel
@@ -59,10 +60,12 @@ sed -i "s/'unknown'/'%{shortcommit}'/g" meson.build
 
 # Remove bundled libs that we have system copies of
 rm -r third_party/tomlplusplus
+rm -r third_party/md4c
 
 %build
 %meson \
-	 -Dsystem_tomlplusplus=true
+	 -Dsystem_tomlplusplus=true \
+	 -Dsystem_md4c \
 %meson_build
 
 %install
